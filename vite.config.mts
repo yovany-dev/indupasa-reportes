@@ -41,7 +41,7 @@ export default defineConfig({
     Vuetify({
       autoImport: true,
       styles: {
-        configFile: 'src/styles/settings.scss',
+        configFile: 'src/styles/variables.scss',
       },
     }),
     Fonts({
@@ -53,6 +53,13 @@ export default defineConfig({
       },
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+      }
+    }
+  },
   define: { 'process.env': {} },
   resolve: {
     alias: {
