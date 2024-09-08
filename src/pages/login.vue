@@ -14,24 +14,26 @@
           class="px-5 py-10"
         >
           <v-text-field
-            v-model="username"
-            :rules="rules"
-            label="Usuario"
+            v-model.trim="user.email"
+            :rules="emailRules"
+            label="Correo electrónico"
+            type="email"
             append-inner-icon="mdi-account"
           ></v-text-field>
 
           <v-text-field
-            v-model="password"
-            :rules="rules"
+            v-model.trim="user.password"
+            :rules="passwordRules"
             label="Contraseña"
+            type="password"
             append-inner-icon="mdi-lock"
           ></v-text-field>
-          <p class="text-error text-center my-2">Usuario o contraseña incorrectos.</p>
+          <p v-show="state.errorMessage" class="text-error text-center my-2">Usuario o contraseña incorrectos.</p>
           <v-btn
-            :loading="loading"
+            :loading="state.loading"
             size="large"
             type="submit"
-            class="button text-white bg-green"
+            class="button mt-4 text-white bg-green"
             block
           >
             Ingresar
@@ -43,24 +45,37 @@
 </template>
 
 <script setup lang="ts">
+  import { useRouter } from "vue-router";
+  import { useFirebaseAuth } from 'vuefire';
+  import { signInWithEmailAndPassword } from "firebase/auth";
+  import { emailRules, passwordRules } from "@/common/inputRules";
   import logoIndupasaReportes from '@/assets/logo-indupasa-reportes.svg';
 
-  const form = ref(false)
-  const username = ref(null)
-  const password = ref(null)
-  const loading = ref(false)
-
-  const rules = [
-    (value: any) => {
-      if (value && value.length > 0) {
-        return true
-      }
-      return 'Campo requerido.'
-    }
-  ]
+  const auth = useFirebaseAuth()!;
+  const router = useRouter();
+  const form = ref(false);
+  const state = reactive({
+    loading: false,
+    errorMessage: false
+  });
+  const user = reactive({
+    email: '',
+    password: ''
+  });
 
   const onSubmit = () => {
-    // code here...
+    if (!form.value) return;
+    state.loading = true;
+
+    signInWithEmailAndPassword(auth, user.email, user.password)
+      .then((userCredential) => {
+        router.push('/');
+      })
+      .catch((error) => {
+        state.loading = false;
+        state.errorMessage = true;
+        throw new Error(error);
+      });
   }
 </script>
 
