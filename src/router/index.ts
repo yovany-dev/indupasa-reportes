@@ -8,11 +8,24 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
+import { routeMeta } from './routeMeta'
+import { authGuard } from './authGuard'
+
+// Add Metadata To Automatically Generated Routes
+routes.forEach(route => {
+  const meta = routeMeta[route.path];
+  if (meta) {
+    route.meta = { ...route.meta, ...meta };
+  }
+})
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: setupLayouts(routes),
 })
+
+// Add Global Guard
+router.beforeEach(authGuard);
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
