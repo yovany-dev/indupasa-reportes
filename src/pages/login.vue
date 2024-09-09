@@ -7,7 +7,7 @@
     </v-row>
     <v-row no-gutters>
       <v-col>
-        <v-sheet class="line bg-green"></v-sheet>
+        <v-sheet class="line bg-v-light-green"></v-sheet>
         <v-form
           v-model="form"
           @submit.prevent="onSubmit"
@@ -33,7 +33,7 @@
             :loading="state.loading"
             size="large"
             type="submit"
-            class="button mt-4 text-white bg-green"
+            class="button mt-4 text-white bg-v-light-green"
             block
           >
             Ingresar

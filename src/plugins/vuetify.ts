@@ -19,11 +19,11 @@ const customTheme: ThemeDefinition = {
     'white': '#FFFFFF',
     'gray': '#E9ECEF',
     'gray-secondary': '#CCCCCC',
-    'green': '#077D3F',
-    'green-2': '#1BA566',
-    'green-3': '#1BA566',
-    'green-4': '#2FC582',
-    'green-5': '#115C34',
+    'v-green': '#0B5733',
+    'v-dark-green': '#053321',
+    'v-green-secondary': '#076B33',
+    'v-light-green': '#0AA649',
+    'v-light-green-secondary': '#0AB665',
   }
 }
 
