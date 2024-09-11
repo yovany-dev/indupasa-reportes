@@ -29,15 +29,11 @@
             append-inner-icon="mdi-lock"
           ></v-text-field>
           <p v-show="state.errorMessage" class="text-error text-center my-2">Usuario o contraseña incorrectos.</p>
-          <v-btn
+          <Button
+            text="Ingresar"
             :loading="state.loading"
-            size="large"
-            type="submit"
-            class="button mt-4 text-white bg-v-light-green"
-            block
-          >
-            Ingresar
-          </v-btn>
+            class="mt-4 w-100"
+          />
         </v-form>
       </v-col>
     </v-row>
@@ -50,6 +46,7 @@
   import { signInWithEmailAndPassword } from "firebase/auth";
   import { emailRules, passwordRules } from "@/common/inputRules";
   import logoIndupasaReportes from '@/assets/logo-indupasa-reportes.svg';
+  import Button from "@/common/components/Button.vue";
 
   const auth = useFirebaseAuth()!;
   const router = useRouter();
