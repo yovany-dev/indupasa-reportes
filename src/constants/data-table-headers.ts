@@ -4,7 +4,7 @@ export const staffHeaders = [
     key: 'docId',
   },
   {
-    title: 'Nombre del conductor',
+    title: 'Nombre del piloto',
     key: 'name',
   },
   {

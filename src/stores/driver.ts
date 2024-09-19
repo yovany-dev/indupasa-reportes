@@ -37,8 +37,8 @@ export const useDriverStore = defineStore('driver', {
     },
     message(): string {
       return(this.selected.length >= 2
-        ? `¿Estás seguro de eliminar ${this.selected.length} conductores?`
-        : '¿Estás seguro de que quieres eliminar este conductor?'
+        ? `¿Estás seguro de eliminar ${this.selected.length} pilotos?`
+        : '¿Estás seguro de que quieres eliminar este piloto?'
       )
     },
   },

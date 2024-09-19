@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row no-gutters>
-      <Title text="Transportes" />
+      <Title text="Lista de Pilotos" />
       <DriverActions />
       <v-col cols="12">
         <v-sheet class="mt-5 mt-md-10">
@@ -57,7 +57,7 @@
 
   const updateDriver = (item: Driver) => {
     driver.dialog.open = true;
-    driver.dialog.name = 'Editar Conductor';
+    driver.dialog.name = 'Editar Piloto';
     driver.dialog.action = 'update';
     driver.dialog.inputField = Object.assign({}, item);
   }

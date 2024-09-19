@@ -3,7 +3,7 @@
     <v-text-field
       class="input-search"
       v-model="driver.search"
-      label="Buscar"
+      label="Buscar piloto"
       prepend-inner-icon="mdi-magnify"
       variant="outlined"
       hide-details
@@ -21,7 +21,7 @@
         />
       </v-fade-transition>
       <Button
-        text="Agregar conductor"
+        text="Agregar piloto"
         :loading="false"
         @click="addDriver"
       />
@@ -37,7 +37,7 @@
 
   const addDriver = () => {
     driver.dialog.open = true;
-    driver.dialog.name = 'Agregar Conductor';
+    driver.dialog.name = 'Agregar Piloto';
     driver.dialog.action = 'add';
     driver.dialog.inputField = Object.assign({});
   }
