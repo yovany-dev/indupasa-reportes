@@ -4,8 +4,6 @@
         <v-app-bar-nav-icon v-if="!appBar.drawer" @click.stop="appBar.drawer = !appBar.drawer"></v-app-bar-nav-icon>
         <v-btn v-if="appBar.drawer" icon="mdi-close" @click.stop="appBar.drawer = !appBar.drawer"></v-btn>
       </template>
-      <v-spacer></v-spacer>
-      <v-app-bar-title>{{ route.path }}</v-app-bar-title>
       <template v-slot:append>
         <v-btn icon="mdi-bell-outline"></v-btn>
         <v-div class="d-flex align-center">
@@ -23,10 +21,9 @@
 <script setup lang="ts">
   import { signOut } from "firebase/auth";
   import { useFirebaseAuth } from 'vuefire';
-  import { useRoute, useRouter } from 'vue-router';
+  import { useRouter } from 'vue-router';
   import { useAppBarStore } from '@/stores/app-bar';
 
-  const route = useRoute();
   const router = useRouter();
   const auth = useFirebaseAuth()!;
   const appBar = useAppBarStore();

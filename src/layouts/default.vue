@@ -15,7 +15,7 @@
       <v-divider color="white"></v-divider>
       <LinkList />
     </v-navigation-drawer>
-    <v-main class="">
+    <v-main class="bg-gray">
       <router-view />
     </v-main>
   </v-app>

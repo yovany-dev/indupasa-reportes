@@ -8,6 +8,13 @@ const links = [
   },
   {
     header: {
+      title: 'Herramientas',
+      icon: 'mdi-tools'
+    },
+    path: '/herramientas',
+  },
+  {
+    header: {
       title: 'Personal',
       icon: 'mdi-account-group'
     },
@@ -15,10 +22,10 @@ const links = [
   },
   {
     header: {
-      title: 'Transportes',
+      title: 'Pilotos',
       icon: 'mdi-truck'
     },
-    path: '/transportes',
+    path: '/pilotos',
   },
 ];
 
