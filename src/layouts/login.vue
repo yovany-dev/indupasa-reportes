@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="w-100 h-screen px-5 d-flex justify-center align-center bg-gray">
+  <v-sheet class="w-100 h-screen px-5 position-fixed d-flex justify-center align-center bg-gray">
     <router-view />
   </v-sheet>
 </template>

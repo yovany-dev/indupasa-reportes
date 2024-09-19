@@ -1,8 +1,10 @@
 <template>
   <v-container class="content pa-0 bg-white rounded">
     <v-row no-gutters justify="center">
-      <v-col class="d-flex justify-center bg-gray">
-        <img :src="logoIndupasaReportes" alt="Logo Indupasa">
+      <v-col>
+        <v-sheet class="d-flex justify-center bg-gray">
+          <img class="w-100" :src="logoIndupasaReportes" alt="Logo Indupasa">
+        </v-sheet>
       </v-col>
     </v-row>
     <v-row no-gutters>
