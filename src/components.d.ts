@@ -8,11 +8,9 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppBar: typeof import('./components/AppBar.vue')['default']
-    AppFooter: typeof import('./components/AppFooter.vue')['default']
     DriverActions: typeof import('./components/driver/DriverActions.vue')['default']
     DriverDialog: typeof import('./components/driver/DriverDialog.vue')['default']
     DriverDialogDelete: typeof import('./components/driver/DriverDialogDelete.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     LinkList: typeof import('./components/LinkList.vue')['default']
     LogoIndupasaReportes: typeof import('./components/LogoIndupasaReportes.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
