@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useFirestore } from 'vuefire'
 import { collection, deleteDoc, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
-import { Driver } from '@/types/driverTypes';
+import { Driver, DriverReport } from '@/types/driverTypes';
 
 const db = useFirestore();
 export const useDriverAPIStore = defineStore('driver-api', {
@@ -23,6 +23,17 @@ export const useDriverAPIStore = defineStore('driver-api', {
       }
       return response
     },
+    async addDriverReport(driverReport: DriverReport) {
+      let response = false;
+      try {
+        const docRef = doc(db, 'driversReport', driverReport.docId);
+        await setDoc(docRef, driverReport);
+        response = true;
+      } catch (error) {
+        console.error(error);
+      }
+      return response
+    },
     async getDrivers(uid: string) {
       const drivers: Driver[] = [];
       try {
@@ -36,12 +47,38 @@ export const useDriverAPIStore = defineStore('driver-api', {
       }
       return drivers;
     },
+    async getDriversReport(uid: string) {
+      const driversReport: DriverReport[] = [];
+      try {
+        const q = query(collection(db, 'driversReport'), where('uid', '==', uid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          driversReport.push(doc.data() as DriverReport);
+        });
+      } catch (error) {
+        console.error(error);
+      }
+      return driversReport;
+    },
     async updateDriver(docId: string, driver: Driver) {
       let response = false;
       try {
         const docRef = doc(db, 'drivers', docId);
         await updateDoc(docRef, {
           ...driver
+        });
+        response = true;
+      } catch (error) {
+        console.error(error);
+      }
+      return response
+    },
+    async updateDriverReport(docId: string, driverReport: DriverReport) {
+      let response = false;
+      try {
+        const docRef = doc(db, 'driversReport', docId);
+        await updateDoc(docRef, {
+          ...driverReport
         });
         response = true;
       } catch (error) {
@@ -62,6 +99,16 @@ export const useDriverAPIStore = defineStore('driver-api', {
         });
       });
       return responses
+    },
+    async deleteDriverReport(docId: string) {
+      let response = false;
+      try {
+        await deleteDoc(doc(db, 'driversReport', docId));
+        response = true;
+      } catch (error) {
+        console.error(error);
+      }
+      return response
     },
   }
 })

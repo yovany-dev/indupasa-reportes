@@ -7,3 +7,10 @@ export interface Driver {
 }
 
 export type ActionType = 'add' | 'update'
+
+export interface DriverReport extends Driver {
+  date: string,
+  checkIn: string,
+  checkOut: string,
+  motive: string,
+}
