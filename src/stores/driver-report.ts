@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { getDate } from '@/utils/date';
 import { getHour } from '@/utils/hour';
 import { getUid } from '@/utils/getUid';
+import { generateDocId } from '@/utils/docIdGenerator';
 import { ActionType, Driver, DriverReport } from '@/types/driverTypes';
 import { useDriverAPIStore } from './driverAPI';
 
@@ -47,8 +48,17 @@ export const useDriverReportStore = defineStore('driver-report', {
         this.getDriversReport();
       }
     },
-    addGuestDriver() {
-      // code here...
+    async addGuestDriver() {
+      const uid = await getUid();
+      const guestDriver: DriverReport = {
+        ...this.dialog.inputField,
+        uid,
+        docId: generateDocId(),
+        date: getDate(),
+        checkIn: getHour(),
+        checkOut: 'Pendiente',
+      };
+      this.addDriverReport(guestDriver);
     },
     newDriverReport(driverName: string) {
       const driverReport = this.drivers.filter(driver => driver.name === driverName);

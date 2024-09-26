@@ -33,6 +33,8 @@
     driverReport.dialog.action = 'add';
     driverReport.dialog.disabled = false;
     driverReport.dialog.inputField = Object.assign({});
+    driverReport.dialog.inputField.checkIn = 'Auto-Generado';
+    driverReport.dialog.inputField.checkOut = 'Pendiente';
   }
 
   watch(selectedDriver, (newValue) => {
