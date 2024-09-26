@@ -8,7 +8,7 @@
           <v-data-table
             :headers="driverReportHeaders"
             :items="driverReport.items"
-            :mobile="false"
+            :mobile="driverReport.isMobileTable"
             :loading="driverReport.loadingTable"
             loading-text="Cargando... Por favor espere"
             no-data-text="No hay reporte el día de hoy."
@@ -17,13 +17,6 @@
           <template v-slot:top>
             <DriverReportDialog />
             <DriverReportDialogDelete />
-          </template>
-          <template v-slot:item.index="{ item }">
-            <div
-              v-for="(i, index) in driverReport.items"
-            >
-              <p v-if="i.name === item.name">{{ index + 1 }}</p>
-            </div>
           </template>
           <template v-slot:item.checkOut="{ item }">
             <v-chip v-if="item.checkOut === 'Pendiente'" color="red">{{ item.checkOut }}</v-chip>
@@ -81,10 +74,19 @@
     driverReport.dialogDelete.open = true;
     driverReport.dialogDelete.docId = docId;
   }
+  const onResize = () => {
+    if (window.innerWidth > 950) {
+      driverReport.isMobileTable = false;
+    } else {
+      driverReport.isMobileTable = true;
+    }
+  }
 
   onMounted(() => {
+    onResize();
     driverReport.getDriversReport();
   });
+  window.addEventListener('resize', onResize);
 </script>
 
 <style scoped lang="scss">

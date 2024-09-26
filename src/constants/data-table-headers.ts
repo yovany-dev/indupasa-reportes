@@ -23,10 +23,6 @@ export const staffHeaders = [
 
 export const driverReportHeaders = [
   {
-    title: '#',
-    key: 'index',
-  },
-  {
     title: 'Hora de Entrada',
     key: 'checkIn',
   },

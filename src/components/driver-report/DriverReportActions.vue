@@ -1,11 +1,12 @@
 <template>
   <v-col cols="12" class="d-flex justify-end ga-2">
     <Button
+      class="flex-fill flex-sm-0-1"
       text="Invitado"
       :loading="false"
       @click="guestDriver"
     />
-    <v-sheet class="btn-new">
+    <v-sheet class="btn-new flex-fill flex-sm-0-1">
       <v-select
         chips
         :hide-details="true"
