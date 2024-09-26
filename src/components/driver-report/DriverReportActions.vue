@@ -31,6 +31,7 @@
     driverReport.dialog.open = true;
     driverReport.dialog.name = 'Agregar Piloto de Invitado';
     driverReport.dialog.action = 'add';
+    driverReport.dialog.disabled = false;
     driverReport.dialog.inputField = Object.assign({});
   }
 

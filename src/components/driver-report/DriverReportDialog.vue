@@ -9,16 +9,7 @@
         <v-row dense>
           <v-col
             cols="12"
-          >
-            <v-text-field
-              label="Fecha"
-              required
-              :rules="rules"
-              v-model.trim="driverReport.dialog.inputField.date"
-            ></v-text-field>
-          </v-col>
-          <v-col
-            cols="12"
+            md="6"
           >
             <v-text-field
               label="Hora de Entrada"
@@ -29,6 +20,7 @@
           </v-col>
           <v-col
             cols="12"
+            md="6"
           >
             <v-text-field
               label="Hora de Salida"
@@ -39,6 +31,43 @@
           </v-col>
           <v-col
             cols="12"
+            md="6"
+          >
+            <v-text-field
+              label="Nombre del Piloto"
+              required
+              :rules="rules"
+              :disabled="driverReport.dialog.disabled"
+              v-model.trim="driverReport.dialog.inputField.name"
+            ></v-text-field>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+          >
+            <v-text-field
+              label="Número de Documento"
+              required
+              :rules="rules"
+              :disabled="driverReport.dialog.disabled"
+              v-model.trim="driverReport.dialog.inputField.documentNumber"
+            ></v-text-field>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+          >
+            <v-text-field
+              label="Empresa"
+              required
+              :rules="rules"
+              :disabled="driverReport.dialog.disabled"
+              v-model.trim="driverReport.dialog.inputField.company"
+            ></v-text-field>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
           >
             <v-text-field
               label="Motivo"

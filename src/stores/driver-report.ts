@@ -19,6 +19,7 @@ export const useDriverReportStore = defineStore('driver-report', {
       name: '',
       action: '' as ActionType,
       required: true,
+      disabled: false,
       inputField: {
         uid: '',
         docId: '',
@@ -98,6 +99,11 @@ export const useDriverReportStore = defineStore('driver-report', {
         this.getDriversReport();
       }
       this.dialogDelete = Object.assign({});
+    },
+    async driverExists(docId: string) {
+      const res = await driverAPI.driverExists(docId);
+      if (res) this.dialog.disabled = true;
+      else this.dialog.disabled = false;
     },
   }
 })
