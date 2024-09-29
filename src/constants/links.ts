@@ -15,10 +15,17 @@ const links = [
   },
   {
     header: {
-      title: 'Personal',
-      icon: 'mdi-account-group'
+      title: 'Iniciar reporte de pilotos',
+      icon: 'mdi-table-edit'
     },
-    path: '/personal',
+    path: '/iniciar-reporte-pilotos',
+  },
+  {
+    header: {
+      title: 'Reporte de pilotos',
+      icon: 'mdi-car-clock'
+    },
+    path: '/reporte-pilotos',
   },
   {
     header: {

@@ -1,6 +1,6 @@
 const tools = [
   {
-    name: 'Iniciar Reporte de Personal',
+    name: 'Iniciar Reporte de Empleados',
     icon: 'mdi-table-account',
     path: '/iniciar-reporte-personal'
   },
@@ -10,7 +10,7 @@ const tools = [
     path: '/iniciar-reporte-pilotos'
   },
   {
-    name: 'Reporte de Personal',
+    name: 'Reporte de Empleados',
     icon: 'mdi-account-clock',
     path: '/reporte-personal'
   },
@@ -20,7 +20,7 @@ const tools = [
     path: '/reporte-pilotos'
   },
   {
-    name: 'Configurar Personal',
+    name: 'Configurar Empleados',
     icon: 'mdi-account-group',
     path: '/personal'
   },
