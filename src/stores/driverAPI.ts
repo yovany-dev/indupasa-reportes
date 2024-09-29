@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { useFirestore } from 'vuefire'
 import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { Driver, DriverReport } from '@/types/driverTypes';
+import { User } from '@/types/userTypes';
 
 const db = useFirestore();
 export const useDriverAPIStore = defineStore('driver-api', {
@@ -59,6 +60,25 @@ export const useDriverAPIStore = defineStore('driver-api', {
         console.error(error);
       }
       return driversReport;
+    },
+    async getUser(uid: string) {
+      const res = {
+        status: false,
+        data: {} as User
+      }
+      try {
+        const docRef = doc(db, 'users', uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data() as User;
+          res.status = true;
+          res.data = data;
+          return res;
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      return res;
     },
     async updateDriver(docId: string, driver: Driver) {
       let response = false;

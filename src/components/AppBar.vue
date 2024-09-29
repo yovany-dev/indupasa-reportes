@@ -8,7 +8,7 @@
         <v-btn icon="mdi-bell-outline"></v-btn>
         <v-div class="d-flex align-center">
           <v-btn icon="mdi-account-circle"></v-btn>
-          <p class="d-none d-sm-block mr-4">Admin</p>
+          <p class="d-none d-sm-block mr-4">{{appBar.username}}</p>
         </v-div>
         <div class="d-flex align-center">
           <v-btn icon="mdi-logout" @click="logout"></v-btn>
@@ -35,4 +35,7 @@
       throw new Error(error);
     });
   }
+  onMounted(() => {
+    appBar.getUser();
+  });
 </script>
