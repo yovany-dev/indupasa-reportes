@@ -1,6 +1,6 @@
 <template>
   <DriverReportCalendar />
-  <v-col cols="6" class="d-flex justify-end ga-2">
+  <v-col cols="12" md="6" class="d-flex justify-md-end order-3 order-md-0 ga-2 mt-10 mt-md-0">
     <Button
       text="Imprimir"
       :loading="false"
