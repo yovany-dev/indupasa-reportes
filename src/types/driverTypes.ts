@@ -14,3 +14,14 @@ export interface DriverReport extends Driver {
   checkOut: string,
   motive: string,
 }
+
+export interface ExcelSheet {
+  index: string,
+  date: string,
+  checkIn: string,
+  checkOut: string,
+  name: string,
+  documentNumber: string,
+  company: string,
+  motive: string,
+}
