@@ -67,6 +67,7 @@ export const useDriverReportStore = defineStore('driver-report', {
       const driverReport = this.drivers.filter(driver => driver.name === driverName);
       const newDriver = {
         ...driverReport[0],
+        docId: generateDocId(),
         date: getDate(),
         checkIn: getHour(),
         checkOut: 'Pendiente',
