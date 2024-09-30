@@ -3,7 +3,7 @@ import { getDate } from '@/utils/date';
 import { getHour } from '@/utils/hour';
 import { getUid } from '@/utils/getUid';
 import { generateDocId } from '@/utils/docIdGenerator';
-import { ActionType, Driver, DriverReport } from '@/types/driverTypes';
+import { ActionType, CheckOut, Driver, DriverReport } from '@/types/driverTypes';
 import { useDriverAPIStore } from './driverAPI';
 
 const driverAPI = useDriverAPIStore();
@@ -13,6 +13,7 @@ export const useDriverReportStore = defineStore('driver-report', {
     drivers: [] as Driver[],
     driversName: [] as string[],
     selectedDriver: null,
+    selectedCheckbox: [] as string[],
     isMobileTable: true,
     loadingTable: true,
     dialog: {
@@ -31,6 +32,7 @@ export const useDriverReportStore = defineStore('driver-report', {
         checkIn: '',
         checkOut: '',
         motive: '',
+        completed: false,
       } as DriverReport
     },
     dialogDelete: {
@@ -57,26 +59,33 @@ export const useDriverReportStore = defineStore('driver-report', {
         date: getDate(),
         checkIn: getHour(),
         checkOut: 'Pendiente',
+        completed: false,
       };
       this.addDriverReport(guestDriver);
     },
     newDriverReport(driverName: string) {
       const driverReport = this.drivers.filter(driver => driver.name === driverName);
-      this.addDriverReport(
-        {
-          ...driverReport[0],
-          date: getDate(),
-          checkIn: getHour(),
-          checkOut: 'Pendiente',
-          motive: 'Descargar'
-        }
-      );
+      const newDriver = {
+        ...driverReport[0],
+        date: getDate(),
+        checkIn: getHour(),
+        checkOut: 'Pendiente',
+        motive: 'Descargar',
+        completed: false,
+      }
+      this.addDriverReport(newDriver);
+    },
+    getCheckbox() {
+      const docIds = this.items.filter(item => item.completed)
+        .map(res => res.docId);
+      this.selectedCheckbox = docIds;
     },
     async getDriversReport() {
       const uid = await getUid();
       const res = await driverAPI.getDriversReport(uid);
       this.items = res;
       this.loadingTable = false;
+      this.getCheckbox();
     },
     async getDriversName() {
       const uid = await getUid();
@@ -88,6 +97,16 @@ export const useDriverReportStore = defineStore('driver-report', {
     async updateDriverReport() {
       const docId = this.dialog.inputField.docId;
       const res = await driverAPI.updateDriverReport(docId, this.dialog.inputField);
+      if (res) {
+        this.getDriversReport();
+      }
+    },
+    async updateCheckOut(docId: string, completed: boolean) {
+      const data: CheckOut = {
+        checkOut: completed ? getHour() : 'Pendiente',
+        completed
+      }
+      const res = await driverAPI.updateCheckOut(docId, data);
       if (res) {
         this.getDriversReport();
       }

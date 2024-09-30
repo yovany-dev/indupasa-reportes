@@ -13,6 +13,7 @@ export interface DriverReport extends Driver {
   checkIn: string,
   checkOut: string,
   motive: string,
+  completed: boolean,
 }
 
 export interface ExcelSheet {
@@ -24,4 +25,9 @@ export interface ExcelSheet {
   documentNumber: string,
   company: string,
   motive: string,
+}
+
+export interface CheckOut {
+  checkOut: string,
+  completed: boolean,
 }

@@ -38,7 +38,9 @@
               ></v-icon>
               <v-checkbox
                 hide-details
-                @change="checkboxUpdated"
+                v-model="driverReport.selectedCheckbox"
+                :value="item.docId"
+                @change="checkboxUpdated(item)"
                 color="v-green-secondary"
               ></v-checkbox>
             </v-sheet>
@@ -69,8 +71,9 @@
     driverReport.driverExists(item.docId);
     driverReport.dialog.inputField = Object.assign({}, item);
   }
-  const checkboxUpdated = (evt: Event) => {
-    // code here...
+  const checkboxUpdated = (item: DriverReport) => {
+    const docId = item.docId;
+    driverReport.updateCheckOut(docId, !item.completed);
   }
   const deleteDriverReport = (docId: string) => {
     driverReport.dialogDelete.open = true;

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useFirestore } from 'vuefire'
 import { collection, deleteDoc, doc, getDoc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
-import { Driver, DriverReport } from '@/types/driverTypes';
+import { CheckOut, Driver, DriverReport } from '@/types/driverTypes';
 import { User } from '@/types/userTypes';
 
 const db = useFirestore();
@@ -99,6 +99,19 @@ export const useDriverAPIStore = defineStore('driver-api', {
         const docRef = doc(db, 'driversReport', docId);
         await updateDoc(docRef, {
           ...driverReport
+        });
+        response = true;
+      } catch (error) {
+        console.error(error);
+      }
+      return response
+    },
+    async updateCheckOut(docId: string, data: CheckOut) {
+      let response = false;
+      try {
+        const docRef = doc(db, 'driversReport', docId);
+        await updateDoc(docRef, {
+          ...data
         });
         response = true;
       } catch (error) {
