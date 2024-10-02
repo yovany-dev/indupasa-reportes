@@ -8,7 +8,7 @@
           <v-data-table
             id="table-d"
             :headers="driverReportHeaders"
-            :items="driverReport.items"
+            :items="ascendingItems"
             :mobile="driverReport.isMobileTable"
             :loading="driverReport.loadingTable"
             loading-text="Cargando... Por favor espere"
@@ -20,7 +20,7 @@
             <DriverReportDialogDelete />
           </template>
           <template v-slot:item.index="{ item }">
-            <div v-for="(i, index) in driverReport.items">
+            <div v-for="(i, index) in ascendingItems">
               <p v-if="i.docId === item.docId">{{ index + 1 }}</p>
             </div>
           </template>
@@ -62,6 +62,7 @@
   import DriverReportDialogDelete from '@/components/driver-report/DriverReportDialogDelete.vue';
 
   const driverReport = useDriverReportStore();
+  const ascendingItems = computed(() => driverReport.sortedItems(false));
 
   const updateDriverReport = (item: DriverReport) => {
     driverReport.dialog.open = true;

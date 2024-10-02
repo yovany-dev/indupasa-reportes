@@ -23,13 +23,14 @@
   import Button from '@/common/components/Button.vue';
 
   const driverReport = useDriverReportStore();
+  const ascendingItems = computed(() => driverReport.sortedItems(false));
   const { loadingTable } = storeToRefs(driverReport);
   const { items } = storeToRefs(driverReport);
   const filename = generateFilename();
   const dataTable = ref<ExcelSheet[]>([]);
 
   const updateDataTable = () => {
-    const newItems = driverReport.items.map((item, index) => ({
+    const newItems = ascendingItems.value.map((item, index) => ({
       index: (index + 1).toString(),
       date: item.date,
       checkIn: item.checkIn,

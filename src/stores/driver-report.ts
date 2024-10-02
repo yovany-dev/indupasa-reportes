@@ -41,7 +41,18 @@ export const useDriverReportStore = defineStore('driver-report', {
     },
   }),
   getters: {
-    // getters here...
+    sortedItems: (state) => (isDescending: boolean) => {
+      return state.items.slice().sort((a, b) => {
+        const parseTime = (time: string) => {
+          const [hours, minutes] = time.split(':').map(Number);
+          return hours * 60 + minutes;
+        };
+
+        return isDescending
+          ? parseTime(b.checkIn) - parseTime(a.checkIn)
+          : parseTime(a.checkIn) - parseTime(b.checkIn);
+      });
+    },
   },
   actions: {
     async addDriverReport(driverReport: DriverReport) {

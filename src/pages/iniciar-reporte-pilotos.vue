@@ -7,7 +7,7 @@
         <v-sheet class="mt-5 mt-md-10">
           <v-data-table
             :headers="startDriverReportHeaders"
-            :items="driverReport.items"
+            :items="descendingItems"
             :mobile="driverReport.isMobileTable"
             :loading="driverReport.loadingTable"
             loading-text="Cargando... Por favor espere"
@@ -63,6 +63,7 @@
   import DriverReportDialogDelete from '@/components/driver-report/DriverReportDialogDelete.vue';
 
   const driverReport = useDriverReportStore();
+  const descendingItems = computed(() => driverReport.sortedItems(true));
 
   const updateDriverReport = (item: DriverReport) => {
     driverReport.dialog.open = true;
