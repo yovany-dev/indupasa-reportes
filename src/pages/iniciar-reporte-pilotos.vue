@@ -10,6 +10,7 @@
             :items="descendingItems"
             :mobile="driverReport.isMobileTable"
             :loading="driverReport.loadingTable"
+            :hide-default-header="driverReport.isMobileTable && true"
             loading-text="Cargando... Por favor espere"
             no-data-text="No hay reporte el día de hoy."
             item-value="id"

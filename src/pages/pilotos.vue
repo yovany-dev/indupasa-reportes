@@ -11,6 +11,7 @@
             :search="driver.search"
             :mobile="driver.isMobileTable"
             :loading="driver.loadingTable"
+            :hide-default-header="driver.isMobileTable && true"
             loading-text="Cargando... Por favor espere"
             no-data-text="No se encontraron coincidencias"
             item-value="id"
