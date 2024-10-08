@@ -9,6 +9,7 @@
         <v-row dense>
           <v-col
             cols="12"
+            md="6"
           >
             <v-text-field
               label="Nombre"
@@ -19,6 +20,7 @@
           </v-col>
           <v-col
             cols="12"
+            md="6"
           >
             <v-text-field
               label="Número de documento"
@@ -29,12 +31,24 @@
           </v-col>
           <v-col
             cols="12"
+            md="6"
           >
             <v-text-field
               label="Empresa"
               required
               :rules="rules"
               v-model.trim="driver.dialog.inputField.company"
+            ></v-text-field>
+          </v-col>
+          <v-col
+            cols="12"
+            md="6"
+          >
+            <v-text-field
+              label="Motivo"
+              required
+              :rules="rules"
+              v-model.trim="driver.dialog.inputField.motive"
             ></v-text-field>
           </v-col>
         </v-row>

@@ -1,9 +1,5 @@
 export const staffHeaders = [
   {
-    title: 'DocId',
-    key: 'docId',
-  },
-  {
     title: 'Nombre del Piloto',
     key: 'name',
   },
@@ -14,6 +10,10 @@ export const staffHeaders = [
   {
     title: 'Empresa',
     key: 'company',
+  },
+  {
+    title: 'Motivo',
+    key: 'motive',
   },
   {
     title: 'Acciones',

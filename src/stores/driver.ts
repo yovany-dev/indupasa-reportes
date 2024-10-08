@@ -24,6 +24,7 @@ export const useDriverStore = defineStore('driver', {
         name: '',
         documentNumber: '',
         company: '',
+        motive: '',
       } as Driver
     },
     dialogDelete: {

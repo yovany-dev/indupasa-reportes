@@ -84,7 +84,6 @@ export const useDriverReportStore = defineStore('driver-report', {
         date: getDate(),
         checkIn: getHour(),
         checkOut: 'Pendiente',
-        motive: 'Descargar',
         completed: false,
       }
       this.addDriverReport(newDriver);

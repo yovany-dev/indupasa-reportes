@@ -14,6 +14,7 @@
             loading-text="Cargando... Por favor espere"
             no-data-text="No se encontraron coincidencias"
             item-value="id"
+            items-per-page="50"
             show-select
             return-object
             v-model="driver.selected"

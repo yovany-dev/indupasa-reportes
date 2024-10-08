@@ -4,6 +4,7 @@ export interface Driver {
   name: string,
   documentNumber: string,
   company: string,
+  motive: string,
 }
 
 export type ActionType = 'add' | 'update'
@@ -12,7 +13,6 @@ export interface DriverReport extends Driver {
   date: string,
   checkIn: string,
   checkOut: string,
-  motive: string,
   completed: boolean,
 }
 
