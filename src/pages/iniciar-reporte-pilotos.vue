@@ -71,7 +71,7 @@
     driverReport.dialog.open = true;
     driverReport.dialog.name = 'Editar Piloto';
     driverReport.dialog.action = 'update';
-    driverReport.driverExists(item.docId);
+    driverReport.driverExists(item.documentNumber);
     driverReport.dialog.inputField = Object.assign({}, item);
   }
   const checkboxUpdated = (item: DriverReport) => {
