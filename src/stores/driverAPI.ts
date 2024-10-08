@@ -119,6 +119,19 @@ export const useDriverAPIStore = defineStore('driver-api', {
       }
       return response
     },
+    async updateUserDate(uid: string, date: string) {
+      let response = false;
+      try {
+        const docRef = doc(db, 'users', uid);
+        await updateDoc(docRef, {
+          date
+        });
+        response = true;
+      } catch (error) {
+        console.error(error);
+      }
+      return response
+    },
     async deleteDrivers(docIds: string[]) {
       let responses: Promise<boolean>[] = docIds.map(docId => {
         return new Promise(async(resolve, reject) => {
@@ -142,6 +155,20 @@ export const useDriverAPIStore = defineStore('driver-api', {
         console.error(error);
       }
       return response
+    },
+    async deleteDriversReport(docIds: string[]) {
+      const responses: Promise<boolean>[] = docIds.map(docId => {
+        return new Promise(async(resolve, reject) => {
+          try {
+            await deleteDoc(doc(db, 'driversReport', docId));
+            resolve(true);
+          } catch (error) {
+            reject(error);
+          }
+          resolve(false);
+        });
+      });
+      return responses
     },
     async driverExists(docId: string) {
       try {

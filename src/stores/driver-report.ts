@@ -10,6 +10,8 @@ const driverAPI = useDriverAPIStore();
 export const useDriverReportStore = defineStore('driver-report', {
   state: () => ({
     items: [] as DriverReport[],
+    uid: '',
+    lastCheckedDate: '',
     drivers: [] as Driver[],
     driversName: [] as string[],
     selectedDriver: null,
@@ -106,6 +108,13 @@ export const useDriverReportStore = defineStore('driver-report', {
       this.drivers = drivers;
       this.driversName = driversName;
     },
+    async getDocIds() {
+      const uid = await getUid();
+      const items = await driverAPI.getDriversReport(uid);
+      this.items = [];
+      this.loadingTable = false;
+      return items.map(item => item.docId);
+    },
     async updateDriverReport() {
       const docId = this.dialog.inputField.docId;
       const res = await driverAPI.updateDriverReport(docId, this.dialog.inputField);
@@ -145,6 +154,30 @@ export const useDriverReportStore = defineStore('driver-report', {
       const res = await driverAPI.driverExists(docId);
       if (res) this.dialog.disabled = true;
       else this.dialog.disabled = false;
+    },
+    async checkDayChange() {
+      const uid = this.uid;
+      const currentDate = getDate();
+      if (currentDate !== this.lastCheckedDate) {
+        // delete drivers report and update date.
+        const docIds = await this.getDocIds();
+        driverAPI.deleteDriversReport(docIds);
+        driverAPI.updateUserDate(uid, currentDate);
+        this.lastCheckedDate = currentDate;
+      }
+    },
+    async checkDate() {
+      const uid = await getUid();
+      const currentDate = getDate();
+      const user = await driverAPI.getUser(uid);
+      if (user.status) {
+        this.uid = uid;
+        this.lastCheckedDate = user.data.date;
+        if (currentDate === this.lastCheckedDate) {
+          this.getDriversReport();
+        }
+        this.checkDayChange();
+      }
     },
   }
 })
