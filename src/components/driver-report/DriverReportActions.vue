@@ -29,11 +29,11 @@
 
   const guestDriver = () => {
     driverReport.dialog.open = true;
-    driverReport.dialog.name = 'Agregar Piloto de Invitado';
+    driverReport.dialog.name = 'Piloto de Invitado';
     driverReport.dialog.action = 'add';
     driverReport.dialog.disabled = false;
     driverReport.dialog.inputField = Object.assign({});
-    driverReport.dialog.inputField.checkIn = 'Auto-Generado';
+    driverReport.dialog.inputField.checkIn = 'Automáticamente';
     driverReport.dialog.inputField.checkOut = 'Pendiente';
   }
 

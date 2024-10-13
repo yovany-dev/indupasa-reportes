@@ -3,7 +3,7 @@
     <AppBar />
     <v-navigation-drawer
       class="text-white bg-v-dark-green"
-      :width="300"
+      :width="320"
       v-model="appBar.drawer"
       temporary
     >
