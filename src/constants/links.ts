@@ -8,24 +8,24 @@ const links = [
   },
   {
     header: {
-      title: 'Iniciar reporte de pilotos',
+      title: 'Iniciar reporte',
       icon: 'mdi-table-edit'
     },
-    path: '/iniciar-reporte-pilotos',
+    path: '/iniciar-reporte',
   },
   {
     header: {
-      title: 'Reporte de pilotos',
+      title: 'Reporte del día',
       icon: 'mdi-car-clock'
     },
-    path: '/reporte-pilotos',
+    path: '/reporte-del-dia',
   },
   {
     header: {
       title: 'Configurar pilotos',
       icon: 'mdi-truck'
     },
-    path: '/pilotos',
+    path: '/configurar-pilotos',
   },
 ];
 

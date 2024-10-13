@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row no-gutters>
-      <Title text="Lista de Pilotos" />
+      <Title text="Configurar pilotos" />
       <DriverActions />
       <v-col cols="12">
         <v-sheet class="mt-5 mt-md-10">

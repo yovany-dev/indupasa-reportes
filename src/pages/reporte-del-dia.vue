@@ -1,13 +1,14 @@
 <template>
   <v-container>
     <v-row no-gutters>
-      <Title text="Iniciar Reporte de Pilotos" />
-      <DriverReportActions />
+      <Title text="Reporte del día" />
+      <DriverReportExportActions />
       <v-col cols="12">
         <v-sheet class="mt-5 mt-md-10">
           <v-data-table
-            :headers="startDriverReportHeaders"
-            :items="descendingItems"
+            id="table-d"
+            :headers="driverReportHeaders"
+            :items="ascendingItems"
             :mobile="driverReport.isMobileTable"
             :loading="driverReport.loadingTable"
             :hide-default-header="driverReport.isMobileTable && true"
@@ -19,8 +20,13 @@
             <DriverReportDialog />
             <DriverReportDialogDelete />
           </template>
+          <template v-slot:item.index="{ item }">
+            <div v-for="(i, index) in ascendingItems">
+              <p v-if="i.docId === item.docId">{{ index + 1 }}</p>
+            </div>
+          </template>
           <template v-slot:item.checkOut="{ item }">
-            <v-chip v-if="item.checkOut === 'Pendiente'" color="red">{{ item.checkOut }}</v-chip>
+            <p v-if="item.checkOut === 'Pendiente'" class="font-italic">No especificado</p>
             <p v-else>{{ item.checkOut }}</p>
           </template>
           <template v-slot:item.actions="{ item }">
@@ -37,13 +43,6 @@
                 size="large"
                 @click="deleteDriverReport(item.docId)"
               ></v-icon>
-              <v-checkbox
-                hide-details
-                v-model="driverReport.selectedCheckbox"
-                :value="item.docId"
-                @change="checkboxUpdated(item)"
-                color="v-green-secondary"
-              ></v-checkbox>
             </v-sheet>
           </template>
           </v-data-table>
@@ -56,15 +55,15 @@
 <script setup lang="ts">
   import { DriverReport } from '@/types/driverTypes';
   import { useDriverReportStore } from '@/stores/driver-report';
-  import { startDriverReportHeaders } from '@/constants/data-table-headers';
+  import { driverReportHeaders } from '@/constants/data-table-headers';
 
   import Title from '@/common/components/Title.vue'
-  import DriverReportActions from '@/components/driver-report/DriverReportActions.vue';
+  import DriverReportExportActions from '@/components/driver-report/DriverReportExportActions.vue';
   import DriverReportDialog from '@/components/driver-report/DriverReportDialog.vue';
   import DriverReportDialogDelete from '@/components/driver-report/DriverReportDialogDelete.vue';
 
   const driverReport = useDriverReportStore();
-  const descendingItems = computed(() => driverReport.sortedItems(true));
+  const ascendingItems = computed(() => driverReport.sortedItems(false));
   let intervalId: number | undefined;
 
   const updateDriverReport = (item: DriverReport) => {
@@ -73,10 +72,6 @@
     driverReport.dialog.action = 'update';
     driverReport.driverExists(item.documentNumber);
     driverReport.dialog.inputField = Object.assign({}, item);
-  }
-  const checkboxUpdated = (item: DriverReport) => {
-    const docId = item.docId;
-    driverReport.updateCheckOut(docId, !item.completed);
   }
   const deleteDriverReport = (docId: string) => {
     driverReport.dialogDelete.open = true;
@@ -103,7 +98,4 @@
 </script>
 
 <style scoped lang="scss">
-  .v-sheet .v-input__control .v-selection-control .v-selection-control__wrapper .v-selection-control__input {
-    justify-content: end !important;
-  }
 </style>
