@@ -68,7 +68,7 @@
 
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((userCredential) => {
-        router.push('/herramientas');
+        router.push('/');
       })
       .catch((error) => {
         state.loading = false;
