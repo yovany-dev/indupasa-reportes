@@ -64,6 +64,7 @@
 
   const driverReport = useDriverReportStore();
   const ascendingItems = computed(() => driverReport.sortedItems(false));
+  let intervalId: number | undefined;
 
   const updateDriverReport = (item: DriverReport) => {
     driverReport.dialog.open = true;
@@ -86,7 +87,12 @@
 
   onMounted(() => {
     onResize();
-    driverReport.getDriversReport();
+    driverReport.checkDate();
+    intervalId = setInterval(driverReport.checkDayChange, 60000);
+  });
+  onUnmounted(() => {
+    clearInterval(intervalId);
+    intervalId = undefined;
   });
   window.addEventListener('resize', onResize);
 </script>
