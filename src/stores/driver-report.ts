@@ -41,6 +41,11 @@ export const useDriverReportStore = defineStore('driver-report', {
       open: false,
       docId: '',
     },
+    dashboard: {
+      pending: 0,
+      totalReports: 0,
+      totalDrivers: 0,
+    },
   }),
   getters: {
     sortedItems: (state) => (isDescending: boolean) => {
@@ -87,6 +92,18 @@ export const useDriverReportStore = defineStore('driver-report', {
         completed: false,
       }
       this.addDriverReport(newDriver);
+    },
+    async getDashboard() {
+      await this.getDriversReport();
+      await this.getDriversName();
+      const pending = this.items.filter(item => item.checkOut === 'Pendiente').length;
+      const totalReports = this.items.length;
+      const totalDrivers = this.drivers.length
+      this.dashboard = {
+        pending,
+        totalReports,
+        totalDrivers,
+      }
     },
     getCheckbox() {
       const docIds = this.items.filter(item => item.completed)

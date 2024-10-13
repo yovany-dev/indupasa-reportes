@@ -8,13 +8,6 @@ const links = [
   },
   {
     header: {
-      title: 'Herramientas',
-      icon: 'mdi-tools'
-    },
-    path: '/herramientas',
-  },
-  {
-    header: {
       title: 'Iniciar reporte de pilotos',
       icon: 'mdi-table-edit'
     },
@@ -29,7 +22,7 @@ const links = [
   },
   {
     header: {
-      title: 'Pilotos',
+      title: 'Configurar pilotos',
       icon: 'mdi-truck'
     },
     path: '/pilotos',
