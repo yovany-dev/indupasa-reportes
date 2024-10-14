@@ -20,16 +20,27 @@
             :rules="emailRules"
             label="Correo electrónico"
             type="email"
-            append-inner-icon="mdi-account"
+            prepend-inner-icon="mdi-email"
           ></v-text-field>
 
           <v-text-field
             v-model.trim="user.password"
             :rules="passwordRules"
+            :type="showPassword ? 'text' : 'password'"
             label="Contraseña"
-            type="password"
-            append-inner-icon="mdi-lock"
-          ></v-text-field>
+            prepend-inner-icon="mdi-lock"
+          >
+            <template v-slot:append-inner>
+              <v-icon
+                v-if="showPassword"
+                @click="handleShowAndHide"
+              >mdi-eye</v-icon>
+              <v-icon
+                v-else
+                @click="handleShowAndHide"
+              >mdi-eye-off</v-icon>
+            </template>
+          </v-text-field>
           <p v-show="state.errorMessage" class="text-error text-center my-2">Usuario o contraseña incorrectos.</p>
           <Button
             text="Ingresar"
@@ -53,6 +64,7 @@
   const auth = useFirebaseAuth()!;
   const router = useRouter();
   const form = ref(false);
+  const showPassword = ref(false);
   const state = reactive({
     loading: false,
     errorMessage: false
@@ -62,6 +74,9 @@
     password: ''
   });
 
+  const handleShowAndHide = () => {
+    showPassword.value = !showPassword.value;
+  }
   const onSubmit = () => {
     if (!form.value) return;
     state.loading = true;
