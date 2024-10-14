@@ -11,7 +11,7 @@
         chips
         :hide-details="true"
         label="Agregar Piloto"
-        class="bg-v-light-green"
+        class="bg-v-light-green rounded"
         v-model="driverReport.selectedDriver"
         :items="driverReport.driversName"
       ></v-select>
