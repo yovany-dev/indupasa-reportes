@@ -32,13 +32,13 @@
           <template v-slot:item.actions="{ item }">
             <v-sheet class="d-flex justify-start align-center">
               <v-icon
-                class="text-v-green me-2"
+                class="text-v-light-green me-2"
                 icon="mdi-pencil"
                 size="large"
                 @click="updateDriverReport(item)"
               ></v-icon>
               <v-icon
-                color="v-green"
+                color="v-light-green"
                 icon="mdi-delete"
                 size="large"
                 @click="deleteDriverReport(item.docId)"

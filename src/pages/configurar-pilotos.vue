@@ -26,13 +26,13 @@
           </template>
           <template v-slot:item.actions="{ item }">
             <v-icon
-              class="text-v-green me-2"
+              class="text-v-light-green me-2"
               icon="mdi-pencil"
               size="large"
               @click="updateDriver(item)"
             ></v-icon>
             <v-icon
-              color="v-green"
+              color="v-light-green"
               icon="mdi-delete"
               size="large"
               @click="deleteDriver(item)"
