@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="12" md="6">
+  <v-col cols="12" sm="6">
     <v-sheet class="d-flex bg-gray">
       <div class="pa-2 rounded-ts rounded-bs bg-v-dark-green">
         <v-icon class="text-white icon-calendar">mdi-calendar</v-icon>

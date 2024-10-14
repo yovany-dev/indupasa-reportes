@@ -1,12 +1,14 @@
 <template>
   <DriverReportCalendar />
-  <v-col cols="12" md="6" class="d-flex justify-md-end order-3 order-md-0 ga-2 mt-10 mt-md-0">
+  <v-col cols="12" sm="6" class="d-flex justify-sm-end ga-2 mt-10 mt-sm-0">
     <Button
       text="Imprimir"
+      class="flex-fill flex-sm-0-1"
       :loading="false"
     />
     <Button
       text="Exportar a Excel"
+      class="flex-fill flex-sm-0-1"
       :loading="driverReport.loadingTable"
       @click="exportTableToExcel(dataTable, filename)"
     />
