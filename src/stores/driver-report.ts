@@ -167,7 +167,8 @@ export const useDriverReportStore = defineStore('driver-report', {
       this.dialogDelete = Object.assign({});
     },
     async driverExists(documentNumber: string) {
-      const res = await driverAPI.driverExists(documentNumber);
+      const uid = await getUid();
+      const res = await driverAPI.driverExists(documentNumber, uid);
       if (res) this.dialog.disabled = true;
       else this.dialog.disabled = false;
     },

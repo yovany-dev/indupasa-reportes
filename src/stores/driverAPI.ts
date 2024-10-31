@@ -170,10 +170,10 @@ export const useDriverAPIStore = defineStore('driver-api', {
       });
       return responses
     },
-    async driverExists(documentNumber : string) {
+    async driverExists(documentNumber : string, uid: string) {
       let response = false;
       try {
-        const q = query(collection(db, 'drivers'), where('documentNumber', '==', documentNumber));
+        const q = query(collection(db, 'drivers'), where('uid', '==', uid), where('documentNumber', '==', documentNumber));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach(doc => {
           response = doc.exists();
