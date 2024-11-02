@@ -1,6 +1,7 @@
 export const routeMeta: Record<string, any> = {
   '/': { requiresAuth: true },
   '/login': { requiresAuth: false },
-  '/personal': { requiresAuth: true },
-  '/transportes': { requiresAuth: true },
+  '/iniciar-reporte': { requiresAuth: true },
+  '/reporte-del-dia': { requiresAuth: true },
+  '/configurar-pilotos': { requiresAuth: true },
 }
