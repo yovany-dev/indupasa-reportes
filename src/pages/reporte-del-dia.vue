@@ -6,7 +6,7 @@
       <v-col cols="12">
         <v-sheet class="mt-5 mt-md-10">
           <v-data-table
-            id="table-d"
+            id="table-report"
             :headers="driverReportHeaders"
             :items="ascendingItems"
             :mobile="driverReport.isMobileTable"

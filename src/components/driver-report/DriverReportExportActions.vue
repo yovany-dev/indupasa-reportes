@@ -4,7 +4,8 @@
     <Button
       text="Imprimir"
       class="flex-fill flex-sm-0-1"
-      :loading="false"
+      :loading="driverReport.loadingTable"
+      @click="printTable(filename)"
     />
     <Button
       text="Exportar a Excel"
@@ -19,6 +20,7 @@
   import { storeToRefs } from 'pinia';
   import { ExcelSheet } from '@/types/driverTypes';
   import { generateFilename } from '@/utils/filename';
+  import { printTable } from '@/utils/html2pdf';
   import { exportTableToExcel } from '@/utils/exceljs';
   import { useDriverReportStore } from '@/stores/driver-report';
   import DriverReportCalendar from './DriverReportCalendar.vue';
