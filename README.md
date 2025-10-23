@@ -27,7 +27,7 @@ demo@indupasa-reportes.web.app
 - [Contacto](mailto:yovanymorales.contact@gmail.com)
 
 ## Imágenes del sistema
-![indupasa-reportes](https://github.com/user-attachments/assets/10f11706-c60f-4367-93d3-dc4fe78496e9)
-![indupasa-reportes-iniciar-reporte](https://github.com/user-attachments/assets/1f3d9c5b-e247-4d27-b008-fa6ad9c659f8)
-![indupasa-reportes-reporte-del-dia](https://github.com/user-attachments/assets/671295a0-7de4-451b-8f32-ac8cfdd33d86)
-![indupasa-reportes-configurar-pilotos](https://github.com/user-attachments/assets/0dd21800-748e-4c1d-aa2b-c8940579eb28)
+<img width="1920" height="1080" alt="indupasa-reportes-configurar-pilotos" src="https://github.com/user-attachments/assets/b94ec1f1-48d2-4475-9870-4bd8a932c88b" />
+<img width="1920" height="1080" alt="indupasa-reportes" src="https://github.com/user-attachments/assets/c03e4640-816e-4a09-9360-d3df74518f96" />
+<img width="1920" height="1080" alt="indupasa-reportes-reporte-del-dia" src="https://github.com/user-attachments/assets/1987185a-6d07-4fcc-b52b-2e1544d3c250" />
+<img width="1920" height="1080" alt="indupasa-reportes-iniciar-reporte" src="https://github.com/user-attachments/assets/03d1c3a1-5f0e-4978-88ef-2662bddd624c" />
